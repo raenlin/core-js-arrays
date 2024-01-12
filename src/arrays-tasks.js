@@ -180,7 +180,7 @@ function getAverage(arr) {
  */
 function isSameLength(arr) {
   const newArr = arr;
-  const res = newArr.every(function (elem) {
+  const res = newArr.every((elem) => {
     if (elem.length === newArr[0].length) {
       return true;
     }
@@ -202,7 +202,7 @@ function isSameLength(arr) {
  */
 function isValueEqualsIndex(arr) {
   const newArr = arr;
-  const res = newArr.some(function (elem, index) {
+  const res = newArr.some((elem, index) => {
     if (elem === index) {
       return true;
     }
