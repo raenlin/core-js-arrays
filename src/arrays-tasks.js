@@ -515,8 +515,10 @@ function getIndicesOfOddNumbers(numbers) {
  *    getHexRGBValues([ 0, 255, 16777215]) => [ '#000000', '#0000FF', '#FFFFFF' ]
  *    getHexRGBValues([]) => []
  */
-function getHexRGBValues(/* arr */) {
-  throw new Error('Not implemented');
+function getHexRGBValues(arr) {
+  return arr.map(
+    (item) => `#${item.toString(16).padStart(6, '0').toUpperCase()}`
+  );
 }
 
 /**
@@ -681,8 +683,26 @@ function sortDigitNamesByNumericOrder(arr) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  let head;
+  let body;
+  let tail;
+  let slicer;
+  let animal;
+  if (arr.length % 2 === 0) {
+    slicer = arr.length / 2;
+    head = arr.slice(0, slicer);
+    tail = arr.slice(arr.length - slicer, arr.length);
+    animal = tail.concat(head);
+  }
+  if (arr.length % 2 !== 0) {
+    slicer = Math.floor(arr.length / 2);
+    head = arr.slice(0, slicer);
+    tail = arr.slice(arr.length - slicer, arr.length);
+    body = arr.splice(slicer, 1);
+    animal = tail.concat(body).concat(head);
+  }
+  return animal;
 }
 
 module.exports = {
