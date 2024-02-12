@@ -604,8 +604,19 @@ function propagateItemsByPositionIndex(/* arr */) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
+function shiftArray(arr, n) {
+  let res;
+  if (n > 0) {
+    const array1 = arr.splice(n + 1, n);
+    const sliced = arr.slice(0, n + 1);
+    res = array1.concat(sliced);
+  }
+  if (n < 0) {
+    const array2 = arr.slice(Math.abs(n));
+    const sliced2 = arr.slice(0, Math.abs(n));
+    res = array2.concat(sliced2);
+  }
+  return res;
 }
 
 /**
@@ -621,8 +632,34 @@ function shiftArray(/* arr, n */) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const numbers = {
+    zero: 0,
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+    nine: 9,
+  };
+  const words = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+  };
+  const arrayOfNumbers = arr.map((item) => numbers[item]);
+  const sorted = arrayOfNumbers.sort();
+  return sorted.map((item) => words[item]);
 }
 
 /**
